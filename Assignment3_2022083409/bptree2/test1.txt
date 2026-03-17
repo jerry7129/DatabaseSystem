@@ -1,0 +1,44 @@
+i 10 value_10
+i 20 value_20
+i 5 value_5
+i 1 value_1
+f 10
+f 999
+i 30 value_30
+i 40 value_40
+i 50 value_50
+i 60 value_60
+i 70 value_70
+i 80 value_80
+i 90 value_90
+i 100 value_100
+i 110 value_110
+i 120 value_120
+i 130 value_130
+i 140 value_140
+i 150 value_150
+i 160 value_160
+i 170 value_170
+i 180 value_180
+i 190 value_190
+i 200 value_200
+i 210 value_210
+i 220 value_220
+i 230 value_230
+i 240 value_240
+i 250 value_250
+i 260 value_260
+i 270 value_270
+i 280 value_280
+i 290 value_290
+i 300 value_300
+i 310 value_310
+i 320 value_320
+f 10
+f 320
+d 10
+f 10
+d 20
+d 5
+f 20
+q
