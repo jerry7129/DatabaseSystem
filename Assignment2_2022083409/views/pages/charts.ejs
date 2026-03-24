@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('../components/header') %>
+        <main>
+            <div class="card mb-3">
+                <h2 class="mb-3">Overall Popular Books (Last 3 Months)</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Authors</th>
+                            <th>Categories</th>
+                            <th>Borrow Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% popularBooks.forEach(book => { %>
+                            <tr>
+                                <td><%= book.title %></td>
+                                <td><%= book.author %></td>
+                                <td><%= book.categories %></td>
+                                <td><%= book.borrow_count %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="mb-3">Popular Books by Category (Last 3 Months)</h2>
+                <form action="/charts" method="GET" class="d-flex gap-2 mb-3">
+                    <label for="categorySelect" class="form-label">Select Category:</label>
+                    <select name="categoryId" id="categorySelect" class="form-select" onchange="this.form.submit()">
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>" <%= selectedCategoryId === category.id ? 'selected' : '' %>><%= category.name %></option>
+                        <% }); %>
+                    </select>
+                </form>
+
+                <% if (popularBooksByCategory.length > 0) { %>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th>Categories</th>
+                                <th>Borrow Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% popularBooksByCategory.forEach(book => { %>
+                                <tr>
+                                    <td><%= book.title %></td>
+                                    <td><%= book.author %></td>
+                                    <td><%= book.categories %></td>
+                                    <td><%= book.borrow_count %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </div>
+            
+            <div class="card mb-3">
+                <h2 class="mb-3">Top 5 Least Circulated Books</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Authors</th>
+                            <th>Categories</th>
+                            <th>Last Borrow Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% deadBooks.forEach(book => { %>
+                            <tr>
+                                <td><%= book.title %></td>
+                                <td><%= book.author %></td>
+                                <td><%= book.categories %></td>
+                                <td><%= book.borrow_date || '-' %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card mb-3">
+                <h2 class="mb-3">Top 5 Users (Last 3 Months)</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>ID</th>
+                            <th>Borrow Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% userRank.forEach(user => { %>
+                            <tr>
+                                <td><%= user.ranking %></td>
+                                <td><%= user.id %></td>
+                                <td><%= user.borrow_count %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
